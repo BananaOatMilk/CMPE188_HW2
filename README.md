@@ -8,7 +8,6 @@ This repo contains the four new PyTorch tasks for HW2.
 - `tasks/logreg_lvl5_l2_regularized_binary/task.py`
 - `tasks/logreg_lvl6_polynomial_features_boundary/task.py`
 - `ml_tasks.json` (grader-friendly filename with just these four task entries + protocol block)
-- `ml_tasks_four_new_tasks.json` (same content as `ml_tasks.json`)
 
 ## Run
 ```bash
