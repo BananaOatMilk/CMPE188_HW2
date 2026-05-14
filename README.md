@@ -1,13 +1,14 @@
 # CMPE188 HW2
 
-This repo contains the four new PyTorch tasks for HW2.
+This repo is my HW2 submission with four new PyTorch tasks.
 
 ## Files
 - `tasks/linreg_lvl5_multifeature_minibatch/task.py`
 - `tasks/linreg_lvl6_huber_outlier_robust/task.py`
 - `tasks/logreg_lvl5_l2_regularized_binary/task.py`
 - `tasks/logreg_lvl6_polynomial_features_boundary/task.py`
-- `ml_tasks.json` (grader-friendly filename with just these four task entries + protocol block)
+- `ml_tasks.json` (contains the four task entries and protocol block)
+- `requirements.txt`
 
 ## Run
 ```bash

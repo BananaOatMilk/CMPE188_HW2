@@ -243,7 +243,7 @@ def main() -> int:
         assert val_metrics["rmse"] < thresholds["val_rmse_max"]
         return 0
     except AssertionError:
-        print("Validation assertions failed for regression quality thresholds.", file=sys.stderr)
+        print("Check failed: validation R2/RMSE did not meet the threshold.", file=sys.stderr)
         return 1
 
 

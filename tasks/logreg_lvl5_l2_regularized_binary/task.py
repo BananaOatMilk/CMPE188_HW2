@@ -280,7 +280,7 @@ def main() -> int:
         assert reg_norm < baseline_norm
         return 0
     except AssertionError:
-        print("Regularized logistic regression validation assertions failed.", file=sys.stderr)
+        print("Check failed: regularized model did not pass F1/weight-norm checks.", file=sys.stderr)
         return 1
 
 

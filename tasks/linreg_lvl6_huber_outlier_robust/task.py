@@ -286,7 +286,7 @@ def main() -> int:
         assert huber_val_metrics["r2"] >= metadata["quality_thresholds"]["val_r2_min"]
         return 0
     except AssertionError:
-        print("Robust regression validation assertions failed.", file=sys.stderr)
+        print("Check failed: Huber model did not meet the expected validation metrics.", file=sys.stderr)
         return 1
 
 

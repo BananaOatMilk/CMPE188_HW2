@@ -342,7 +342,7 @@ def main() -> int:
         assert accuracy_gain > th["accuracy_gain_min"]
         return 0
     except AssertionError:
-        print("Polynomial feature validation assertions failed.", file=sys.stderr)
+        print("Check failed: polynomial model did not beat thresholds/baseline enough.", file=sys.stderr)
         return 1
 
 
