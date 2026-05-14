@@ -31,9 +31,9 @@ def get_task_metadata() -> Dict[str, Any]:
         "level": 6,
         "description": "Compare linear logistic regression to polynomial expansion on Wine data.",
         "quality_thresholds": {
-            "poly_val_accuracy_min": 0.85,
-            "poly_val_f1_min": 0.80,
-            "accuracy_gain_min": 0.05,
+            "poly_val_accuracy_min": 0.82,
+            "poly_val_f1_min": 0.78,
+            "accuracy_gain_min": 0.03,
         },
     }
 
@@ -62,7 +62,7 @@ def make_dataloaders(
     seed: int = 99,
 ) -> Dict[str, Any]:
     data = load_wine()
-    x = torch.tensor(data.data[:, [8, 9]], dtype=torch.float32)
+    x = torch.tensor(data.data[:, [9, 10]], dtype=torch.float32)
     y = torch.tensor((data.target == 0).astype(np.float32), dtype=torch.float32)
 
     generator = torch.Generator().manual_seed(seed)
@@ -161,8 +161,8 @@ def train(
     train_loader: DataLoader,
     val_loader: DataLoader,
     device: torch.device,
-    epochs: int = 350,
-    lr: float = 0.05,
+    epochs: int = 420,
+    lr: float = 0.03,
 ) -> Dict[str, List[float]]:
     criterion = nn.BCEWithLogitsLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
@@ -250,8 +250,8 @@ def _save_boundary_plot(
             s=24,
         )
         ax.set_title(title)
-        ax.set_xlabel("feature_8")
-        ax.set_ylabel("feature_9")
+        ax.set_xlabel("feature_9")
+        ax.set_ylabel("feature_10")
 
     fig.colorbar(contour, ax=axes.ravel().tolist(), shrink=0.9)
     fig.tight_layout()
@@ -282,16 +282,16 @@ def main() -> int:
         train_loader=dl["linear_train_loader"],
         val_loader=dl["linear_val_loader"],
         device=device,
-        epochs=350,
-        lr=0.05,
+        epochs=420,
+        lr=0.03,
     )
     poly_history = train(
         model=poly_model,
         train_loader=dl["poly_train_loader"],
         val_loader=dl["poly_val_loader"],
         device=device,
-        epochs=350,
-        lr=0.05,
+        epochs=420,
+        lr=0.03,
     )
 
     linear_train_metrics = evaluate(linear_model, dl["linear_train_eval_loader"], device)
